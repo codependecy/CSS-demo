@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>index</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul{
+				list-style: none;
+			}
+			input{
+				background: transparent;
+				outline: none;
+				border: none;
+				width: 100px;
+				line-height: 50px;
+				text-align: center;
+				background-color: lightgray;
+				border-radius: 5px;
+				font-size: 14px;
+			}
+			.box{
+				width: 600px;
+				height: 500px;
+				margin: 50px auto;
+				font-family: "microsoft yahei";
+			}
+			.head{
+				width: 100%;
+				height: 50px;
+				margin-top: 10px;
+			}
+			.head input{
+				margin-left: 20px;
+				background: lightgreen;
+			}
+			.content li{
+				margin-top: 10px;
+			}
+			.footer{
+				margin-top: 30px;
+			}
+			.clearfix:after,.clearfix:before{
+				content: "";
+				display: table;
+			}
+			.clearfix:after{
+				clear: both;
+			}
+			.clearfix{
+				zoom: 1;
+			}
+			.pic{
+				float: right;
+				width: 300px;
+				height: 100px;
+				margin-right: 50px;
+				border: 1px solid #666;
+			}
+			.pic li{
+				width: 58px;
+				height: 98px;
+				float: left;
+				position: relative;
+				border: 1px solid #999;
+			}
+			.pic li span{
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				background: lightgray;
+			}
+			.pic li .active{
+				background: lightsalmon;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+//				1,获取购买的人数   id   head_text
+//				2,创建一个长度为购买人数的数组,数组的数据随机
+//				3,从content里面获取范围,范围作出筛选
+//				4,鼠标移动到pic里面的li上面时,span高度根据范围来进行显示,左边的input显示数据
+				
+				var oHead_text=document.getElementById("head_text")
+				var oHead_btn=document.getElementById("head_btn")
+				var oCon=document.getElementsByClassName("content")[0]
+				var aLi=oCon.getElementsByTagName("li")
+				var aSpan=document.getElementsByTagName("span")
+				var oPic=document.getElementsByClassName("pic")[0]
+				var oP_li=oPic.getElementsByTagName("li")
+				var oLi=document.getElementsByClassName("fot_li")[0]
+				var arr=[];
+				var arr2=[]
+				var arr3=[]
+				var arr4=[]
+				var arr5=[]
+				var arr6=[]
+				var aCon=oCon.getElementsByTagName("input")
+				oHead_btn.onclick=function(){
+					if(isNaN(oHead_text.value)){
+						alert('请输入有效数字!')
+						return false
+					}
+					var num=Number(oHead_text.value)
+					for (var i=0;i<num;i++) {
+						arr.push(parseInt(Math.random()*1000))
+					}
+//					从aCon里面获取有效范围
+					arr.sort(function(a,b){return a-b})
+					aCon[aCon.length-1].value=arr[arr.length-1]
+					for (var i=0;i<arr.length;i++) {
+						if(arr[i]<aCon[1].value){
+							arr2.push(arr[i])
+						}
+						else if(arr[i]<aCon[3].value){
+							arr3.push(arr[i])
+						}
+						else if(arr[i]<aCon[5].value){
+							arr4.push(arr[i])
+						}
+						else if(arr[i]<aCon[7].value){
+							arr5.push(arr[i])
+						}
+						else if(arr[i]<aCon[9].value){
+							arr6.push(arr[i])
+						}
+					}
+					aSpan[0].style.height=arr2.length/arr.length*100+'%'
+					aSpan[1].style.height=arr3.length/arr.length*100+'%'
+					aSpan[2].style.height=arr4.length/arr.length*100+'%'
+					aSpan[3].style.height=arr5.length/arr.length*100+'%'
+					aSpan[4].style.height=arr6.length/arr.length*100+'%'
+				}
+				for (var i=0;i<oP_li.length;i++) {
+					oP_li[i].index=i
+					oP_li[i].onmouseover=function(){
+						aSpan[this.index].className='active'
+						oLi.innerHTML=aLi[this.index].innerHTML
+					}
+					oP_li[i].onmouseout=function(){
+						aSpan[this.index].className=''
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<!--1.随机生成一个数组，数组的长度随机，数组里面的内容随机
+		2.限制范围，给定5个长度，然后让数组里面的数去匹配这5个长度
+		3.生成条形图-->
+		<div id="box" class="box">
+			<div class="head">
+				<input type="text" id="head_text" placeholder="输入购买人数"><input type="button" id="head_btn" value="确认">
+			</div>
+			<div class="content">
+				<ul>
+					<li><input type="text" id="" value="0">&nbsp;&nbsp;-&nbsp;&nbsp;<input type="text" id="" value="17"></li>
+					<li><input type="text" id="" value="17">&nbsp;&nbsp;-&nbsp;&nbsp;<input type="text" id="" value="49"></li>
+					<li><input type="text" id="" value="49">&nbsp;&nbsp;-&nbsp;&nbsp;<input type="text" id="" value="121"></li>
+					<li><input type="text" id="" value="121">&nbsp;&nbsp;-&nbsp;&nbsp;<input type="text" id="" value="340"></li>
+					<li><input type="text" id="" value="340">&nbsp;&nbsp;-&nbsp;&nbsp;<input type="text" id="" value=""></li>
+				</ul>
+			</div>
+			<div class="footer clearfix">
+				<div class="fot_li">
+					<input type="text" id="footer_text">&nbsp;&nbsp;-&nbsp;&nbsp;<input type="text" id="footer_text2">
+				</div>
+				<div class="pic">
+					<ul class="clearfix">
+						<li><span></span></li>
+						<li><span></span></li>
+						<li><span></span></li>
+						<li><span></span></li>
+						<li><span></span></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

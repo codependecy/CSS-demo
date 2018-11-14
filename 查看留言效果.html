@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>index</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul{
+				list-style: none;
+			}
+			.clearfix:after,.clearfix:before{
+				content: "";
+				display: table;
+			}
+			.clearfix:after{
+				clear: both;
+			}
+			.clearfix{
+				zoom: 1;
+			}
+			img{
+				vertical-align: middle;
+			}
+			a{
+				text-decoration: none;
+			}
+			em{
+				font-style: normal;
+			}
+			.box{
+				border-top: 1px solid gray;
+				border-bottom: 1px solid gray;
+				margin: 0 10px;
+				padding-top: 14px;
+				padding-bottom: 14px;
+			}
+			.left{
+				float: left;
+				width: 72px;
+				padding-left: 18px;
+			}
+			.left .score li{
+				float: left;
+				padding: 0 2px;
+				width: 8px;
+				height: 8px;
+				background: url(images/c4.png) no-repeat 0 0;
+			}
+			.score ul{
+				padding-bottom: 5px;
+			}
+			.score p{
+				font-size: 12px;
+				line-height: 20px;
+				color: #ccc;
+			}
+			.content{
+				width: 380px;
+				padding-left: 20px;
+				float: left;
+			}
+			.content_text{
+				padding-bottom: 5px;
+			}
+			.content_text span{
+				font-size: 12px;
+				line-height: 18px;
+				color: #ccc;
+			}
+			.con_pic .tab{
+				width: 380px;
+				overflow: hidden;
+				/*height: 65px;*/
+				/*position: relative;*/
+			}
+			.con_pic .tab span{
+				display: none;
+				width: 18px;
+				height: 60px;
+				text-align: center;
+				line-height: 60px;
+				border: 1px solid #666666;
+				position: absolute;
+				top: 0;
+				right: 0;
+			}
+			.con_pic .tab span:nth-of-type(1){
+				left: 0;
+			}
+			.con_pic ul{
+				/*position: absolute;*/
+				top: 0;
+				left: 25px;
+				width: 335px;
+				margin-right: -5px;
+			}
+			.con_pic li{
+				float: left;
+				border: 1px solid #A4A4AE;
+				margin-right: 5px;
+				width: 60px;
+				height: 60px;
+				margin-bottom: 5px;
+				position: relative;
+			}
+			.con_pic .active{
+				border-color: #E73239;
+			}
+			.con_pic .active i{
+				display: block;
+			}
+			.con_pic li i{
+				display: none;
+				border-width: 3px;
+				border-color: #E73239 transparent transparent transparent;
+				border-style: solid;
+				position: absolute;
+				bottom: -6px;
+				left: 50%;
+				margin-left: -3px;
+			}
+			.con_pic li img{
+				width: 100%;
+				height: 100%;
+			}
+			.con_pic p{
+				display: none;
+			}
+			.con_pic p a{
+				background: url(images/6c2.png) no-repeat 0 2px;
+				padding: 0 20px;
+				font-size: 12px;
+				line-height: 18px;
+				color: #A4A4AE;
+			}
+			.big{
+				position: relative;
+				display: none;
+				margin-top: 10px;
+				margin-bottom: 20px;
+				width: 378px;
+				border: 1px solid #333333;
+				height: 298px;
+			}
+			.big img{
+				width: 100%;
+				height: 100%;
+			}
+			.big span{
+				height: 100%;
+				width: 100px;
+				position: absolute;
+				top: 0;
+			}
+			.big span:nth-of-type(1){
+				left: 0;
+			}
+			.big span:nth-last-of-type(1){
+				right: 0;
+			}
+			.con_reply{
+				margin-bottom: 5px;
+			}
+			.con_reply a{
+				font-size: 12px;
+				line-height: 18px;
+				color: #A4A4AE;
+			}
+			.con_reply span{
+				font-size: 12px;
+				line-height: 18px;
+				color: #A4A4AE;
+			}
+			.right{
+				margin-left: 10px;
+				float: left;
+				font-size: 12px;
+				line-height: 18px;
+				color: #A4A4AE;
+			}
+			.vip span{
+				color: lightcoral;
+			}
+			.right .username{
+				background: url(images/c13.png) no-repeat 0 0;
+			}
+			.username{
+				text-indent: 25px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+//				1,鼠标点击图片的时候
+//					.con_pic .tab	height: 65px;	position: relative;
+//					.con_pic ul		position: absolute;
+//					.big			display: block;
+//					.con_pic p		display: block
+//					.con_pic .tab span	display: block;
+//				2,当前图片class变成active
+//					点击big里面的左右能切换图片
+//					点击.tab里面的左右改变ul的left值
+				var oTab=document.getElementsByClassName("tab")[0]
+				var oTab_Ul=oTab.getElementsByTagName("ul")[0]
+				var aLi=oTab.getElementsByTagName("li")
+				var oTab_i=oTab.getElementsByTagName("i")
+				var oTab_span=oTab.getElementsByTagName("span")
+				var oConpic=document.getElementsByClassName("con_pic")[0]
+				var oConP=oConpic.getElementsByTagName("p")[0]
+				var oBig=document.getElementsByClassName("big")[0]
+				var oBimg=oBig.getElementsByTagName("img")[0]
+				var oBig_span=oBig.getElementsByTagName("span")
+				
+				for (var i=0;i<aLi.length;i++) {
+					aLi[i].index=i
+					aLi[i].innerHTML='<img src="images/'+(100+parseInt(i))+'.jpg">'
+					aLi[i].onmouseover=function(){
+						this.className='active'
+					}
+					aLi[i].onmouseout=function(){
+						this.className=''
+					}
+					aLi[i].onclick=function(){
+						oBimg.src='images/'+(100+parseInt(this.index))+'.jpg'
+						oTab.style.height='65px'
+						oTab.style.position='relative'
+						oTab_Ul.style.position='absolute'
+						oBig.style.display='block'
+						oConP.style.display='block'
+						oTab_span[0].style.display='block'
+						oTab_span[1].style.display='block'
+						//添加小箭头
+						for (var n=0;n<aLi.length;n++) {
+							var oI=document.createElement("i")
+							aLi[n].appendChild(oI)
+						}
+					}
+				}
+				
+//				上面部分左右箭头设置
+				oTab_span[1].onclick=function(){
+				}
+				oTab_span[0].onclick=function(){
+				}
+				
+				
+//				大图片的左右箭头
+				oBig_span[0].onclick=function(){
+					
+				}
+		
+				
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box" class="box clearfix">
+			<div class="left">
+				<div class="score">
+					<ul class="clearfix">
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+					<p class="day">下单四天</p>
+					<p class="time">2016</p>
+					<p class="classname">acer</p>
+					<p class="commodity">蜂鸟</p>
+				</div>
+			</div>
+			<div class="content">
+				<div class="content_text">
+					<span>asdasdasd</span>
+				</div>
+				<div class="con_pic">
+					<div class="tab">
+						<ul class="clearfix">
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+						<span>&lt;</span>
+						<span>&gt;</span>
+					</div>
+					<p>
+						<a href="javascript:;">收起</a>
+						<a href="javascript:;">查看大图</a>
+						<a href="javascript:;">向左旋转</a>
+						<a href="javascript:;">向右旋转</a>
+					</p>
+					<div class="big">
+						<img src="images/29.png">
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+				<div class="con_reply">
+					<a href="javascript:;">点赞</a><span>(12)</span>&nbsp;
+					<a href="javascript:;">回复</a><span>(1)</span>
+				</div>
+			</div>
+			<div class="right">
+				<p class="username">yuanbo</p>
+				<p class="vip"><span>钻石会员</span><em>福建</em></p>
+				<p class="add">iPhone</p>
+			</div>
+		</div>
+	</body>
+</html>

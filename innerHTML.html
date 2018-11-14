@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			input{
+				display: block;
+				width: 100px;
+				height: 100px;
+				font-size: 40px;
+				line-height: 100px;
+				text-align: center;
+				font-family: "microsoft yahei";
+				margin: 50px auto;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var oBtn=document.getElementById("btn")
+				var timer=null;
+				oBtn.onclick=function(){
+					clearInterval(timer)
+					oBtn.value='等等'
+					oBtn.disabled=true
+					oBtn.style.cursor='not-allowed'; 
+					timer=setTimeout(function(){
+						oBtn.disabled=false
+						oBtn.style.cursor='default'
+					},3000)
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" id="btn" value="点击" />
+	</body>
+</html>

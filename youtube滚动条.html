@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>index</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul{
+				list-style: none;
+			}
+			.head{
+				border-bottom: 1px solid gray;
+			}
+			.head li{
+				line-height: 50px;
+				background: url(images/c2.png) no-repeat 26px center;
+				text-indent: 75px;	
+			}
+			.head li:nth-of-type(2){
+				background-image: url(images/1c2.png);
+			}
+			.head li:nth-last-of-type(1){
+				background-image: url(images/2c2.png);
+			}
+			.content h4{
+				line-height: 72px;
+				font-weight: 500;
+				font-family: "microsoft yahei";
+				color: lightgray;
+				text-indent: 24px;
+			}
+			.content li{
+				height: 48px;
+				line-height: 48px;
+				text-indent: 75px;
+				background: url(images/112.png) no-repeat 24px center;
+			}
+			.login .more_li{
+				border-top: 1px solid lightgray;
+				border-bottom: 1px solid lightgray;
+				line-height: 48px;
+				height: 48px;
+				
+				text-indent: 75px;
+			}
+			.login .more_li li{
+				background: url(images/c12.png) no-repeat 30px center;
+			}
+			.login_text{
+				height: 110px;
+				padding-left: 30px;
+			}
+			.login_text p{
+				margin-top: 14px;
+				width: 156px;
+				line-height: 24px;
+				font-size: 14px;
+			}
+			.login_text a{
+				display: inline-block;
+				font-size: 14px;
+				color: #E92F1F;
+				margin-top: 10px;
+				margin-left: 5px;
+				text-decoration: none;
+			}
+			.footer li:nth-of-type(1){
+				border-top: 2px solid lightgray;
+				border-bottom: 1px solid lightgray;
+				font-family: "microsoft yahei";
+			}
+			.footer li{
+				background: url(images/c3.png) no-repeat 22px center;
+				text-indent: 70px;
+				height: 44px;
+				line-height: 44px;
+			}	
+			.bottom{
+				width: 100%;
+				line-height: 44px;
+				height: 44px;
+				text-align: center;
+			}
+			.bottom a{
+				display: inline-block;
+				text-decoration: none;
+				padding: 0 5px;
+				color: gray;
+			}
+			.box{
+				overflow: hidden;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var ch=document.documentElement.clientHeight
+				var oBox=document.getElementById("box")
+				var aLi=oBox.getElementsByTagName("li")
+				oBox.style.height=ch+'px'
+				oBox.onmouseover=function(){
+					oBox.style.overflow='scroll'
+				}
+				oBox.onmouseout=function(){
+					oBox.style.overflow='hidden'
+				}
+				for (var i=0;i<aLi.length;i++) {
+					aLi[i].onmouseover=function(){
+						this.style.backgroundColor='#999'
+					}
+					aLi[i].onmouseout=function(){
+						this.style.backgroundColor='white'
+					}
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box" class="box">
+			<div class="head">
+				<ul>
+					<li><span>首页</span></li>
+					<li><span>时下流行</span></li>
+					<li><span>历史记录</span></li>
+				</ul>
+			</div>
+			<div class="content">
+				<h4>YOUTUBE精选</h4>
+				<ul>
+					<li><span>音乐</span></li>
+					<li><span>体育</span></li>
+					<li><span>游戏</span></li>
+					<li><span>电影</span></li>
+					<li><span>电视节目</span></li>
+					<li><span>新闻</span></li>
+					<li><span>直播</span></li>
+					<li><span>焦点</span></li>
+					<li><span>360°全景视频</span></li>
+				</ul>
+				<div class="login">
+					<div class="more_li">
+						<ul>
+							<li><span>浏览频道</span></li>
+						</ul>
+					</div>
+					<div class="login_text">
+						<p>立即登录，查看您的频道和推荐内容</p>
+						<a href="javascript:;">登录</a>
+					</div>
+				</div>
+			</div>
+			<div class="footer">
+				<ul>
+					<li><span>YouTube Red</span></li>
+					<li><span>设置</span></li>
+					<li><span>帮助</span></li>
+					<li><span>发送反馈</span></li>
+				</ul>
+				<div class="bottom"><a href="javascript:;">关于</a><a href="javascript:;">新闻</a><a href="javascript:;">版权</a><a href="javascript:;">创作者</a></div>
+			</div>
+		</div>
+	</body>
+</html>
