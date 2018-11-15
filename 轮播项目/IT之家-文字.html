@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ljj.cn</title>
+    <style>
+        .item{
+            width: 300px;
+            margin: 30px auto;
+            border: solid 1px red;
+        }
+        .item a{
+            display: inline-block;
+            width: 100%;
+            height: 30px;
+            font:14px/30px "Microsoft YaHei","微软雅黑";
+            text-decoration: none;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            /*
+                省略号：
+                    1 必须有宽度
+                    2 不能是inline
+                    3 white-space: nowrap;  文字不换行
+                    4 overflow: hidden;
+                    5 text-overflow: ellipsis;
+            */
+            
+        }
+        
+        .item a:hover{
+            width: auto;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="item">
+        <a href="#">文字呢日同爱上对方爱上对方爱上对上对方爱上对上对方爱上对上对方爱上对上对方爱上对上对方爱上对上对方爱上对方</a>
+    </div>
+</body>
+</html>

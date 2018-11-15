@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ljj.cn</title>
+    <style>
+        *{margin: 0;padding: 0;list-style: none;}
+        a{text-decoration: none;}
+        
+        .box{
+            width:1000px;
+            margin: 30px auto;
+        }
+        .l{
+            width: 760px;
+            float: left;
+        }
+        .send_message{
+            height: 200px;
+            background-color: greenyellow;
+            margin-bottom: 10px;
+            width: 100%;
+            position: relative;
+            z-index: 3;
+        }
+        .r{
+            width: 230px;
+            float: right;
+            height: 400px;
+            background: pink;
+            position: relative;
+        }
+        .user_message{
+            height: 600px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="l">
+            <div class="send_message" id="send_message">
+                <textarea></textarea>
+                <input type="button" value="取消">
+            </div>
+            <div class="user_message" id="user_message">
+                用户所发送的信息
+            </div>
+        </div>
+        <div class="r" id="right">
+            
+        </div>
+    </div>
+    <script src="newMove.js"></script>
+    <script>
+        var oSendBox = document.getElementById('send_message');
+        var oTextarea = oSendBox.getElementsByTagName('textarea')[0];
+        var oCancel = oSendBox.getElementsByTagName('input')[0];
+        
+        var oSendUser = document.getElementById('user_message');
+        var oRight = document.getElementById('right');
+        
+        oTextarea.onfocus = function(){
+            oSendBox.style.height = oSendBox.offsetHeight + 100 + 'px';
+            
+            move(oSendBox,{
+                left: 125
+            },{
+                type: Tween.Elastic.easeOut
+            })
+            
+            move(oRight,{
+                top: oSendUser.offsetTop - 30
+            })
+        }
+        
+        
+    </script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</body>
+</html>

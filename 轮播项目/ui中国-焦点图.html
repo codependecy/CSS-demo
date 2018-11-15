@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ljj.cn</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .box {
+            width: 1200px;
+            margin: 30px auto;
+            position: relative;
+            overflow: hidden;
+            height: 500px;
+        }
+        .tab {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .tab li {
+            float: left;
+            width: 1200px;
+            height: 500px;
+            position: absolute;
+            left: 0; top: 0;
+        }
+        .tab div{
+            width: 120px;
+            height: 100px;
+            float: left;
+            background-repeat: no-repeat;
+/*            background-color: rgba(255,0,0,.4);*/
+        }
+        .tab img {
+            width: 100%;
+            height: 100%;
+        }
+        .tab .active {
+            z-index: 2;
+        }
+        .num {
+            position: absolute;
+            left: 0;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+        }
+        .num a {
+            display: inline-block;
+            height: 8px;
+            width: 20px;
+            background-color: hotpink;
+        }
+        .num .active {
+            background-color: deepskyblue;
+        }
+        .prev,
+        .next {
+            position: absolute;
+            top: 50%;
+            width: 40px;
+            height: 100px;
+            margin-top: -50px;
+            background-color: yellowgreen;
+            z-index: 4;
+        }
+        .prev {
+            left: 0;
+        }
+        .next {
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box">
+        <ul class="tab">
+            <li class="active"></li>
+        </ul>
+        <div class="num">
+            <a href="javascript:;" class="active"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+        <a href="javascript:;" class="prev"></a>
+        <a href="javascript:;" class="next"></a>
+    </div>
+    <script src="newMove.js"></script>
+    <script>
+        function $(id) { return document.getElementById(id); }
+        function $$(obj, sName) { return obj.getElementsByClassName(sName); }
+        
+        
+        var oBox = $('box');
+        var oNext = $$(oBox,'next')[0];
+        var bw = oBox.offsetWidth, bh = oBox.offsetHeight;
+        var oLi = oBox.getElementsByTagName('li')[0];
+        var n=1;
+        //把img 转成背景
+        
+        oLi.style.background = 'url(img/'+n+'.jpg)';
+        
+        oNext.onclick = function (){
+            oLi.innerHTML = '';
+            for(var i=0;i<50;i++){
+                var oDiv = document.createElement('div');
+                oDiv.style.backgroundImage = 'url(img/'+n+'.jpg)';
+                oLi.appendChild(oDiv);
+                oDiv.style.backgroundPosition = -oDiv.offsetLeft + 'px '+-oDiv.offsetTop + 'px';
+            }
+            n++;
+            oLi.style.background = 'url(img/'+n+'.jpg)';
+            var aDiv = oLi.getElementsByTagName('div');
+            for(var i=0;i<50;i++){
+                move(aDiv[i],{
+                    opacity:0
+                },{
+                    time: i
+                })
+            }
+            
+            
+            
+        }
+        
+        
+        
+        
+    </script>
+</body>
+</html>

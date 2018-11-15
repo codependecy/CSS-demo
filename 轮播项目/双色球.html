@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title> </title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        
+        em,
+        i,
+        span {
+            font-style: normal;
+            display: inline-block;
+            font-size: 16px;
+            line-height: 22px;
+            font-family: "微软雅黑";
+            font-weight: bold;
+            vertical-align: top;
+        }
+        
+        i {
+            margin-left: 50px;
+        }
+        
+        em {
+            margin-left: 10px;
+        }
+        
+        a {
+            text-decoration: none;
+            display: inline-block;
+            color: black;
+            font-family: "微软雅黑";
+            font-weight: bold;
+        }
+        
+        .clearfix:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        
+        .box {
+            width: 900px;
+            margin: 100px auto;
+            border: 2px solid #ccc;
+            padding: 50px;
+            position: relative;
+        }
+        
+        .top {
+            text-align: center;
+        }
+        
+        .top a {
+            width: 100px;
+            height: 60px;
+            line-height: 60px;
+            background: orange;
+            font-size: 20px;
+        }
+        
+        .content {
+            margin-top: 20px;
+        }
+        
+        .content .red {
+            width: 500px;
+            float: left;
+            margin-right: 90px;
+        }
+        
+        .content .blue {
+            width: 300px;
+            float: left
+        }
+        
+        #red,
+        #blue {
+            width: 120px;
+            font-size: 14px;
+            line-height: 30px;
+            background: #ccc;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        #red {
+            color: red;
+        }
+        
+        #blue {
+            color: blue;
+        }
+        
+        .red_con,
+        .blue_con {
+            font-size: 0;
+        }
+        
+        .red_con a,
+        .blue_con a,
+        .redChild a,
+        .blueChild a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            line-height: 40px;
+            text-align: center;
+            background: #e8e2e2;
+            font-size: 16px;
+            margin: 5px;
+            box-shadow: 1px 1px #ccc;
+        }
+        
+        .redChild .active,
+        .red_con .active {
+            background: red;
+            color: white;
+        }
+        
+        .blueChild .active,
+        .blue_con .active {
+            background: blue;
+            color: white;
+        }
+        
+        .tips {
+            width: 120px;
+            height: 60px;
+            font-size: 20px;
+            line-height: 60px;
+            background: orange;
+            margin: 10px auto;
+            text-align: center;
+            font-weight: 600;
+            display: block;
+        }
+        
+        a:hover {
+            color: white;
+        }
+        
+        .end {
+            width: 100%;
+            min-height: 120px;
+            border: 2px solid black;
+            box-sizing: border-box;
+        }
+        
+        html .new {
+            line-height: 22px;
+            padding-left: 5px;
+            overflow: hidden;
+        }
+        
+        li:hover {
+            background: #f0f09d
+        }
+        
+        input {
+            width: 60px;
+            height: 20px;
+            text-align: center;
+            border-color: transparent;
+            background: transparent;
+            font-size: 16px;
+            line-height: 20px;
+            font-family: "微软雅黑";
+            font-weight: bold;
+            margin-right: 300px;
+            float: right
+        }
+        
+        input:hover {
+            border-color: black;
+            background: white;
+        }
+        
+        .newdiv {
+            width: 700px;
+            height: 300px;
+            position: absolute;
+            left: 100px;
+            top: 50px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 50px;
+        }
+        
+        .newa {
+            width: 120px;
+            height: 60px;
+            display: block;
+            text-align: center;
+            font-size: 20px;
+            line-height: 60px;
+            background: #ccc;
+            color: white;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box">
+        <div class="top" id="top">
+            <a href="javascript:;" id="one">随机1注</a>
+            <a href="javascript:;" id="five">随机5注</a>
+        </div>
+        <div class="content clearfix" id="content">
+            <div class="red">
+                <a href="javascript:;" id="red">机选红球6个</a>
+                <div class="red_con" id="red_con">
+                    <a href="javascript:;">01</a>
+                    <a href="javascript:;">02</a>
+                    <a href="javascript:;">03</a>
+                    <a href="javascript:;">04</a>
+                    <a href="javascript:;">05</a>
+                    <a href="javascript:;">06</a>
+                    <a href="javascript:;">07</a>
+                    <a href="javascript:;">08</a>
+                    <a href="javascript:;">09</a>
+                    <a href="javascript:;">10</a>
+                    <a href="javascript:;">11</a>
+                    <a href="javascript:;">12</a>
+                    <a href="javascript:;">13</a>
+                    <a href="javascript:;">14</a>
+                    <a href="javascript:;">15</a>
+                    <a href="javascript:;">16</a>
+                    <a href="javascript:;">17</a>
+                    <a href="javascript:;">18</a>
+                    <a href="javascript:;">19</a>
+                    <a href="javascript:;">20</a>
+                    <a href="javascript:;">21</a>
+                    <a href="javascript:;">22</a>
+                    <a href="javascript:;">23</a>
+                    <a href="javascript:;">24</a>
+                    <a href="javascript:;">25</a>
+                    <a href="javascript:;">26</a>
+                    <a href="javascript:;">27</a>
+                    <a href="javascript:;">28</a>
+                    <a href="javascript:;">29</a>
+                    <a href="javascript:;">30</a>
+                </div>
+            </div>
+            <div class="blue">
+                <a href="javascript:;" id="blue">机选蓝球1个</a>
+                <div class="blue_con" id="blue_con">
+                    <a href="javascript:;">01</a>
+                    <a href="javascript:;">02</a>
+                    <a href="javascript:;">03</a>
+                    <a href="javascript:;">04</a>
+                    <a href="javascript:;">05</a>
+                    <a href="javascript:;">06</a>
+                    <a href="javascript:;">07</a>
+                    <a href="javascript:;">08</a>
+                    <a href="javascript:;">09</a>
+                    <a href="javascript:;">10</a>
+                    <a href="javascript:;">11</a>
+                    <a href="javascript:;">12</a>
+                    <a href="javascript:;">13</a>
+                    <a href="javascript:;">14</a>
+                    <a href="javascript:;">15</a>
+                    <a href="javascript:;">16</a>
+                </div>
+            </div>
+        </div>
+        <a href="javascript:;" id="tips" class="tips">加入选号栏</a>
+        <div class="end" id="end">
+            <ul id="list"></ul>
+        </div>
+    </div>
+
+
+    <script>
+        function $(id) {
+            return document.getElementById(id);
+        }
+
+        function getClass(obj, sClass) {
+            return obj.getElementsByClassName(sClass);
+        }
+        var oBox = $('box');
+        var oRed = $('red_con'),
+            oBlue = $('blue_con'),
+            oTip = $('tips'); //提示
+        oRed.alink = oRed.getElementsByTagName('a');
+        oBlue.alink = oBlue.getElementsByTagName('a');
+
+        //点击选中或取消球的颜色
+        function setBg(obj, sClass) {
+            for (var i = 0; i < obj.length; i++) {
+                obj[i].onclick = function() {
+                    if (this.className.indexOf(sClass) == -1) {
+                        this.className = sClass;
+                    } else {
+                        this.className = '';
+                    }
+                }
+            }
+        }
+
+        setBg(oRed.alink, 'active');
+        setBg(oBlue.alink, 'active');
+
+        var oList = $('list');
+        oList.isNext = false;
+
+        //添加 到数组中
+        function addArr(links, arr) {
+            for (var i = 0; i < links.length; i++) {
+                if (links[i].className.indexOf('active') != -1) {
+                    arr.push(links[i].innerHTML)
+                }
+            }
+        }
+
+        //提示按钮点击
+        oTip.onclick = function() {
+            oRed.arr = [];
+            oBlue.arr = [];
+            //红球
+            addArr(oRed.alink, oRed.arr);
+            //蓝球
+            addArr(oBlue.alink, oBlue.arr);
+
+            console.log(oRed.arr, oBlue.arr);
+
+            if (oRed.arr.length == 6 && oBlue.arr.length == 1) {
+                var oLi = document.createElement('li');
+                var oSpan = document.createElement('span');
+                oSpan.innerHTML = oRed.arr + '||' + oBlue.arr;
+
+
+                var oLink = document.createElement('a');
+                oLink.innerHTML = '修改';
+                oLink.href = 'javascript:;';
+
+
+                //修改
+                oLink.onclick = function() {
+                    //弹出层的div
+                    var oNewDiv = document.createElement('div');
+                    oNewDiv.className = 'newdiv';
+
+                    //红球的盒子
+                    var redChild = document.createElement('div');
+                    redChild.className = 'redChild';
+                    redChild.innerHTML = oRed.innerHTML;
+
+                    //处理红球
+                    //                    for(var i=0;i<30;i++){
+                    //                        var aLink = document.createElement('a')
+                    //                        aLink.className = 'new_Rdot';
+                    //                        aLink.innerHTML = i;
+                    //                        redChild.appendChild(aLink);
+                    //                    }
+
+                    oNewDiv.appendChild(redChild);
+
+                    //添加修改按钮
+                    var xgLink = document.createElement('a');
+                    xgLink.className = 'newa';
+                    xgLink.href = 'javascript:;';
+                    xgLink.innerHTML = '修改';
+
+                    xgLink.onclick = function() {
+                        oRed.arr = [];
+                        oBlue.arr = [];
+                        //红球
+                        addArr(redChild.alink, oRed.arr);
+                        //蓝球
+                        //addArr(oBlue.alink,oBlue.arr);
+
+                        console.log(oRed.arr, oBlue.arr);
+                    }
+
+
+                    oNewDiv.appendChild(xgLink);
+
+                    redChild.alink = redChild.getElementsByTagName('a');
+                    setBg(redChild.alink, 'active');
+
+                    oBox.appendChild(oNewDiv);
+                }
+
+                oLi.appendChild(oSpan)
+                oLi.appendChild(oLink)
+
+                oList.appendChild(oLi);
+            }
+        }
+
+        //随即
+        var radOne = $('one');
+
+        function setArr() {
+            var redArr = [],
+                blueArr = [];
+            for (var i = 1; i <= 30; i++) {
+                redArr.push(i);
+            }
+            redArr.sort(function(a, b) {
+                return 0.5 - Math.random();
+            })
+            redArr.length = 6;
+
+            for (var i = 0; i < oRed.alink.length; i++) {
+                oRed.alink[i].className = '';
+            }
+            //更新元素
+            for (var i = 0; i < redArr.length; i++) {
+                oRed.alink[redArr[i] - 1].className = 'active';
+            }
+
+            //蓝球
+            for (var i = 1; i <= 16; i++) {
+                blueArr.push(i);
+            }
+            blueArr.sort(function(a, b) {
+                return 0.5 - Math.random();
+            })
+            blueArr.length = 1;
+
+            for (var i = 0; i < oBlue.alink.length; i++) {
+                oBlue.alink[i].className = '';
+            }
+            //更新元素
+            for (var i = 0; i < blueArr.length; i++) {
+                oBlue.alink[blueArr[i] - 1].className = 'active';
+            }
+
+            //            return allArr;
+        }
+
+        radOne.onclick = function() {
+            console.log(setArr());
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

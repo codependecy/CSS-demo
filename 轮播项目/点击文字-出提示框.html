@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ljj.cn</title>
+    <style>
+        h1{font-family: "Microsoft YaHei","微软雅黑"; font-weight: normal;}
+        span,em{display: inline-block;height: 20px; width: 20px; background-color: #ccc; text-align: center;}
+        .dian{display: inline-block; height: 20px; width: 20px; border-radius: 50%; background-color: #000;}
+    </style>
+</head>
+<body>
+    <h1 id="h1">Hello World</h1>
+    <i class="dian" id="dian"></i>#<input type="text" id="input">
+    <span>B</span>
+    <em>I</em>
+    <input type="button" id="btn" value="ok">
+    
+    <script>
+        var oH1 = document.getElementById('h1');
+        var oDian = document.getElementById('dian');
+        var oInput = document.getElementById('input');
+        var oBtn = document.getElementById('btn');
+        var oB = document.getElementsByTagName('span')[0];
+        var oI = document.getElementsByTagName('em')[0];
+        
+        oInput.oninput = function (){
+            oDian.style.backgroundColor = '#' + oInput.value;
+        }
+        
+        oBtn.onclick = function(){
+            oH1.style.color = '#' + oInput.value;
+        }
+        
+        oB.onclick = function (){
+            oH1.innerHTML = '<strong>'+oH1.innerHTML+'</strong>';
+        }
+        
+        oI.onclick = function (){
+            oH1.innerHTML = '<em>'+oH1.innerHTML+'</em>';
+        }
+        
+        /*
+            oInput.oninput （ie9+）   当输入的时候
+            oInput.onpropertychange  IE8-
+            
+            onchange  select 上的   当选择完成以后
+        */
+        
+    </script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</body>
+</html>

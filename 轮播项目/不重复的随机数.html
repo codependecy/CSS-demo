@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ljj.cn</title>
+</head>
+<body>
+    <script>
+        var arr = [];
+        for(var i=0;i<50;i++){
+            arr.push(i);
+        }
+        
+        arr.sort(function (a,b){
+            return Math.random() - Math.random();
+        })
+        
+        
+        console.log(arr);
+    </script>
+</body>
+</html>
