@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>index</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul{
+				list-style: none;
+			}
+			#box{
+				width: 550px;
+				height: 500px;
+				margin: 50px auto;
+				overflow: hidden;
+				position: relative;
+				background: gray;
+			}
+			li{
+				width: 550px;
+				height: 400px;
+				float: left;
+			}
+			ul{
+				position: absolute;
+				top: 50px;
+				left: 0;
+				height: 400px;
+				width: 3300px;
+			}
+			li:nth-of-type(1){
+				background: lightblue;
+			}
+			li:nth-of-type(2){
+				background: lightcoral;
+			}
+			li:nth-of-type(3){
+				background: lightcyan;
+			}
+			li:nth-of-type(4){
+				background: lightgoldenrodyellow;
+			}
+			li:nth-of-type(5){
+				background: lightgray;
+			}
+			li:nth-of-type(6){
+				background: lightgreen;
+			}
+			#box>span{
+				width: 50px;
+				height: 100px;
+				line-height: 100px;
+				font-size: 30px;
+				font-weight: 600;
+				text-align: center;
+				font-family: "微软雅黑";
+				background: rgba(0,0,0,.3);
+				position: absolute;
+				top: 50%;
+				margin-top: -50px;
+				z-index: 4;
+				color: white;
+			}
+			#prev{
+				left: 0;
+			}
+			#next{
+				right: 0;
+			}
+			#footer{
+				width: 260px;
+				height: 50px;
+				position: absolute;
+				bottom: 0;
+				margin-bottom: -10px;
+				left: 50%;
+				margin-left: -130px;
+			}
+			#footer>span{
+				display: block;
+				width: 30px;
+				height: 30px;
+				float: left;
+				margin-right: 10px;
+				background: rgba(0,0,0,.4);
+			}
+			#footer span:nth-last-of-type(1){
+				margin-right: 0;
+				/*width: 80px;*/
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<span id="prev">&lt;</span>
+			<span id="next">&gt;</span>
+			<ul id="list">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<div id="footer">
+				<span class="active"></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+		<script src="move.js"></script>
+		<script type="text/javascript">
+			var oBox = document.getElementById('box');
+	        var oUl = document.getElementById('list');
+	        var aLi = oUl.getElementsByTagName('li');
+	        var oNext = document.getElementById('next');
+	        var oPrev = document.getElementById('prev');
+	        var oFooter=document.getElementById("footer")
+	        var aSpan=oFooter.getElementsByTagName("span")
+	        var now=0;
+	        function getStyle(obj,attr){
+            	return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj,false)[attr];
+      	  	}
+	        aSpan[now].style.background=getStyle(aLi[now],'backgroundColor')
+	        aSpan[now].style.paddingLeft='30px'
+	        oNext.onclick = function (){
+	        	aSpan[now].style.background='rgba(0,0,0,.4)'
+	        	aSpan[now].style.paddingLeft=0
+	            now++;
+	            if(now>5){
+	            	move(oUl,{
+	                	left:-now*oBox.offsetWidth
+	           		 })
+	            	now=0
+	            }
+	            move(oUl,{
+	                left:-now * oBox.offsetWidth
+	            })
+	            aSpan[now].style.background=getStyle(aLi[now],'backgroundColor')
+	            aSpan[now].style.paddingLeft='30px'
+	        }
+	        oPrev.onclick = function (){
+	        	aSpan[now].style.background='rgba(0,0,0,.4)'
+	        	aSpan[now].style.paddingLeft=0
+	            now--;
+	            if(now<0){
+	                move(oUl,{
+	                	left:-now*oBox.offsetWidth
+	           		 })
+	                now = 5
+	            }
+	            move(oUl,{
+	                left:-now * oBox.offsetWidth
+	            })
+	            aSpan[now].style.background=getStyle(aLi[now],'backgroundColor')
+	            aSpan[now].style.paddingLeft='30px'
+	        }
+		</script>
+	</body>
+</html>

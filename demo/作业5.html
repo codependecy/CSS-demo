@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>index</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul{
+				list-style: none;
+			}
+			#box{
+				width: 600px;
+				height: 400px;
+				overflow: hidden;
+				position: relative;
+				margin: 50px auto;
+			}
+			li{
+				width: 300px;
+				height: 300px;
+				position: absolute;
+				font-size: 50px;
+				line-height: 300px;
+				font-weight: 600;
+				font-family: "微软雅黑";
+				text-align: center;
+				background: lightgreen;
+			}
+			#one{
+				width: 200px;
+				height: 200px;
+				line-height: 200px;
+				top: 50px;
+				left: 200px;
+				background: lightblue;
+				z-index: 5;
+			}
+			#two{
+				top: 0;
+				left: 300px;
+				z-index: 4;
+				background: lightgreen;
+			}
+			#three{
+				top: 0;
+				left: 300px;
+				z-index: 3;
+				background: lightsalmon;
+			}
+			#four{
+				left: 0;
+				top: 0;
+				z-index: 1;
+				background: lightseagreen;
+			}
+			#five{
+				top: 0;
+				left: 0;
+				background: lightpink;
+				z-index: 1;
+			}
+			span{
+				width: 50px;
+				height: 100px;
+				position: absolute;
+				top: 50%;
+				z-index: 100000;
+				margin-top: -50px;
+				background: rgba(0,0,0,.5);
+			}
+			#left{
+				left: 0;
+			}
+			#right{
+				right: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<span id="left">
+				
+			</span>
+			<span id="right">
+				
+			</span>
+			<ul>
+				<li id="one">一</li>
+				<li id="two">二</li>
+				<li id="three">三</li>
+				<li id="four">四</li>
+				<li id="five">五</li>
+			</ul>
+		</div>
+		<script src="move.js"></script>
+		<script type="text/javascript">
+				var aLi=document.getElementsByTagName("li")
+				var oLeft=document.getElementById("left")
+				var oRight=document.getElementById("right")
+				var n=0
+//				点击右键,第一张向左移动,第二张向中间移动
+//				第二张向左移动,第三张向中间移动
+				function getStyle(obj,attr){
+	            	return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj,false)[attr];
+	      	  	}
+				
+				oRight.onclick=function(){
+					var z=parseInt(getStyle(aLi[n],'zIndex'))
+					move(aLi[n],{
+						left:0,
+						width:300,
+						height:300,
+						top:0
+					})
+					if(n<4){
+						n++					
+					}
+					else{
+						n=0
+					}
+					aLi[n].style.zIndex=z+1
+					move(aLi[n],{
+						left:150,
+						width:200,
+						height:200,
+						top:50,
+					})
+					
+					
+					if(n==0){
+						aLi[2].style.left='300px'
+					}
+					if(n==1){
+						aLi[3].style.left='300px'
+						aLi[3].style.zIndex=2
+					}
+					if(n==2){
+						aLi[4].style.left='300px'
+					}
+					if(n==3){
+						aLi[0].style.left='300px'
+					}
+					if(n==4){
+						aLi[1].style.left='300px'
+					}
+				}
+		</script>
+	</body>
+</html>

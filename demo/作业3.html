@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>index</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul{
+				list-style: none;
+			}
+			#box{
+				width: 850px;
+				height: 500px;
+				margin: 50px auto;
+				overflow: hidden;
+				position: relative;
+				background: gray;
+			}
+			li{
+				width: 250px;
+				height: 400px;
+				float: left;
+				margin-right: 50px;
+				font-size: 60px;
+				line-height: 400px;
+				font-weight: 600;
+				font-family: "微软雅黑";
+				text-align: center;
+				background: lightgreen;
+			}
+			li:nth-last-of-type(1){
+				margin-right: 0;
+			}
+			ul{
+				position: absolute;
+				top: 50px;
+				left: 0;
+				height: 400px;
+				width: 2650px;
+			}
+			#box>span{
+				width: 50px;
+				height: 100px;
+				line-height: 100px;
+				font-size: 30px;
+				font-weight: 600;
+				text-align: center;
+				font-family: "微软雅黑";
+				background: rgba(0,0,0,.3);
+				position: absolute;
+				top: 50%;
+				margin-top: -50px;
+				z-index: 4;
+				color: white;
+			}
+			#prev{
+				left: 0;
+			}
+			#next{
+				right: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<span id="prev">&lt;</span>
+			<span id="next">&gt;</span>
+			<ul id="list">
+				<li>9</li>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+				<li>7</li>
+				<li>8</li>
+			</ul>
+		</div>
+		<script src="move.js"></script>
+		<script type="text/javascript">
+			var oBox = document.getElementById('box');
+	        var oUl = document.getElementById('list');
+	        var aLi = oUl.getElementsByTagName('li');
+	        var oNext = document.getElementById('next');
+	        var oPrev = document.getElementById('prev');
+	        var now=1;
+	        oUl.style.left='-300px'
+	        var t1=null;
+			oNext.onclick=function(){
+				t1=setInterval(function(){
+					oUl.style.left=oUl.offsetLeft-20+'px'
+					if(oUl.offsetLeft<='-600'){
+						clearInterval(t1)
+						oUl.appendChild(aLi[0])
+						oUl.style.left='-300px'
+					}
+				},10)
+			}
+			oPrev.onclick=function(){
+				clearInterval(t1)
+				t1=setInterval(function(){
+					oUl.style.left=oUl.offsetLeft+20+'px'
+					if(oUl.offsetLeft>='0'){
+						clearInterval(t1)
+						oUl.insertBefore(aLi[aLi.length-1],aLi[0])
+						oUl.style.left='-300px'
+					}
+				},10)
+			}
+
+//	        oNext.onclick = function (){
+//	            now++;
+//	            console.log(now,-now * aLi[0].offsetWidth)
+//	            if(now==aLi.length-2){
+//	            	oUl.style.left=
+////	                now=1;
+////	                oUl.style.left = -(now+2) * aLi[0].offsetWidth -50*(now+2)+ 'px';
+//////	                now=2;
+//	            }
+//	            move(oUl,{
+//	                left:-now * aLi[0].offsetWidth-50*now
+//	            })
+//	            
+//	        }
+//	        oPrev.onclick = function (){
+//	            now--;
+//	            if(now==-1){
+//	                now = aLi.length - 3;
+//	                oUl.style.left = -aLi[0].offsetWidth * (aLi.length - 2) + 'px';
+//	            }
+//	            move(oUl,{
+//	                left:-now * aLi[0].offsetWidth
+//	            })
+//	        }
+
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+//	        oNext.onclick = function (){
+//	            now++;
+//	            if(now>2){
+//	            	move(oUl,{
+//	                	left:-now*oBox.offsetWidth-50*now
+//	           		 })
+//	            	now=0
+//	            }
+//	            move(oUl,{
+//	                left:-now * oBox.offsetWidth-50*now
+//	            })
+//	        }
+//	        oPrev.onclick = function (){
+//	            now--;
+//	            if(now<0){
+//	                move(oUl,{
+//	                	left:-now*oBox.offsetWidth-50*now
+//	           		 })
+//	                now = 2
+//	            }
+//	            move(oUl,{
+//	                left:-now * oBox.offsetWidth-50*now
+//	            })
+//	        }
+		</script>
+	</body>
+</html>
