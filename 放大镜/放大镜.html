@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>index</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.box{
+				width: 1000px;
+				height: 600px;
+				margin-left: 50px;
+				margin-top: 50px;
+			}
+			#left{
+				width: 200px;
+				height: 200px;
+				float: left;
+				position: relative;
+			}
+			#left img{
+				width: 100%;
+				height: 100%;
+				vertical-align: middle;
+			}
+			#right{
+				width: 500px;
+				height: 500px;
+				float: left;
+				overflow: hidden;
+				position: relative;
+			}	
+			#right img{
+				width: 2000px;
+				height: 2000px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				vertical-align: middle;
+			}
+			span{
+				display: none;
+				position: absolute;
+				width: 50px;
+				height: 50px;
+				background: rgba(0,255,0,.7);
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var oLeft=document.getElementById("left")
+				var oRight=document.getElementById("right")
+				var oSpan=document.getElementsByTagName("span")[0]
+				var oImg=document.getElementsByTagName("img")[1]
+				oLeft.onmouseover=function(){
+					oSpan.style.display='block'
+					document.onmousemove=function(ev){
+						function fn(i){
+//							i是放大之后图片所在div的宽度与原图片所在div的宽度之比
+							var oEv=ev||event
+							var oLw=oLeft.offsetWidth
+							var oLh=oLeft.offsetHeight
+							var oLt=oLeft.offsetTop
+							var oLl=oLeft.offsetLeft
+							var oSpW=oSpan.offsetWidth/2
+							var oSpH=oSpan.offsetHeight/2
+							var a=oLl+oSpW
+							var b=oLt+oSpH
+							var x=oEv.clientX
+							var y=oEv.clientY
+							if(x>=oLw+oSpW){x=oLw+oSpW}
+							if(y>=oLh+oSpH){y=oLh+oSpH}
+							if(x<=oLt+oSpH){x=oLt+oSpH}
+							if(y<=oLl+oSpW){y=oLl+oSpW}
+							oSpan.style.left=x-a+'px'
+							oSpan.style.top=y-b+'px'
+							oImg.style.left='-'+i*(x-a)+'px'
+							oImg.style.top='-'+i*(y-b)+'px'
+						}
+						fn(10)
+					}
+				}
+				oLeft.onmouseout=function(){
+					oSpan.style.display='none'
+					document.onmousemove=null
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="box">
+			<div id="left"><img src="3.jpg" alt="pic"/><span></span></div>
+			<div id="right"><img src="3.jpg" alt="pic"/></div>
+		</div>
+	</body>
+</html>
